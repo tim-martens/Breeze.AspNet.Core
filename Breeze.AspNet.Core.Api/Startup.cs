@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Breeze.Core;
+using Newtonsoft.Json.Serialization;
+using Breeze.AspNetCore;
+using Breeze.AspNet.Core.Data.Context;
 
 namespace Breeze.AspNet.Core.Api
 {
@@ -28,7 +28,23 @@ namespace Breeze.AspNet.Core.Api
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            var mvcBuilder = services.AddMvc();
+
+            mvcBuilder.AddJsonOptions(opt => {
+                var ss = JsonSerializationFns.UpdateWithDefaults(opt.SerializerSettings);
+                var resolver = ss.ContractResolver;
+                if (resolver != null)
+                {
+                    var res = resolver as DefaultContractResolver;
+                    res.NamingStrategy = null;  // <<!-- this removes the camelcasing
+                }
+
+            });
+
+            mvcBuilder.AddMvcOptions(o => { o.Filters.Add(new GlobalExceptionFilter()); });
+
+            var connString = Configuration.GetConnectionString("SchoolContext");
+            services.AddScoped<SchoolContext>(_ => new SchoolContext(connString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

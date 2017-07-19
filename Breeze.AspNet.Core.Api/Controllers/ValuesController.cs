@@ -1,19 +1,26 @@
-﻿using System;
+﻿using Breeze.AspNet.Core.Data.Context;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Breeze.AspNet.Core.Api.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly SchoolContext _context;
+
+        public ValuesController(SchoolContext context)
+        {
+            _context = context;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _context.Courses.Select(el => el.Title);
+            //return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breeze.AspNet.Core.Api", "Breeze.AspNet.Core.Api\Breeze.AspNet.Core.Api.csproj", "{634FF41F-1639-496B-BF1B-D5B790F2D942}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breeze.AspNet.Core.Data", "Breeze.AspNet.Core.Data\Breeze.AspNet.Core.Data.csproj", "{9E6E6416-C4A4-4566-902A-7155B59F356E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{634FF41F-1639-496B-BF1B-D5B790F2D942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634FF41F-1639-496B-BF1B-D5B790F2D942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634FF41F-1639-496B-BF1B-D5B790F2D942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E6E6416-C4A4-4566-902A-7155B59F356E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6E6416-C4A4-4566-902A-7155B59F356E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6E6416-C4A4-4566-902A-7155B59F356E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6E6416-C4A4-4566-902A-7155B59F356E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
